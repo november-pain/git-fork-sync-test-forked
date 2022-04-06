@@ -28,7 +28,7 @@ print("New branches: ", new_branches)
 print("Common branches: ", common_branches)
 
 def merge_existing_branch(git, branch, main_branch):
-    git.checkout(branch)
+    git.checkout("--track", "origin/" + branch)
     git.merge("--no-edit", "upstream/" + branch)
     git.push()
     git.checkout(main_branch)
