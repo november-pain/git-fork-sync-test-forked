@@ -13,6 +13,7 @@ jobs:
         run: |
           git config --global user.name 'devops'
           git config --global user.email 'devops@inc4.net'
+          git pull --unshallow
           git remote add upstream https://github.com/november-pain/git-fork-sync-test.git
           git fetch upstream
           git merge --no-edit upstream/master
