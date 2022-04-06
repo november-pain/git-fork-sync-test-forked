@@ -1,4 +1,4 @@
-name: Merge upstream master
+name: Merge upstream
 on:
   schedule:
     - cron:  '0/5 * * * *'
@@ -9,12 +9,9 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
+      - name: Install pip packages
+        run: pip3 install -r requirements.txt
+
       - name: Merge upstream
-        run: |
-          git config --global user.name 'devops'
-          git config --global user.email 'devops@inc4.net'
-          git pull --unshallow
-          git remote add upstream https://github.com/november-pain/git-fork-sync-test.git
-          git fetch upstream
-          git merge --no-edit upstream/master
-          git push
+        run: python3 sync_upstream.py
+          
