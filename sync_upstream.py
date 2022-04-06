@@ -8,6 +8,7 @@ repo = Repo(os.getcwd())
 
 repo.config_writer().set_value("user", "name", "devops").release()
 repo.config_writer().set_value("user", "email", "devops@inc4.net").release()
+repo.config_writer().set_value("checkout", "remote", "origin").release()
 
 upstream = repo.create_remote("upstream", upstream_url)
 
@@ -28,7 +29,7 @@ print("New branches: ", new_branches)
 print("Common branches: ", common_branches)
 
 def merge_existing_branch(git, branch, main_branch):
-    git.checkout("--track", "origin/" + branch)
+    git.checkout(branch)
     git.merge("--no-edit", "upstream/" + branch)
     git.push()
     git.checkout(main_branch)
