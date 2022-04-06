@@ -22,28 +22,28 @@ upstream_branches = [branch.name.split('/')[1] for branch in remote_upstream_ref
 common_branches = [branch for branch in upstream_branches if branch in origin_branches]
 new_branches = [branch for branch in upstream_branches if branch not in origin_branches]
 
-print("Upstream branches: " + upstream_branches)
-print("Origin branches: " + origin_branches)
-print("New branches: " + new_branches)
-print("Common branches: " + common_branches)
+print("Upstream branches: ", upstream_branches)
+print("Origin branches: ", origin_branches)
+print("New branches: ", new_branches)
+print("Common branches: ", common_branches)
 
-def merge_existing_branch(git, branch, main_branch):
-    git.checkout(branch)
-    git.merge("--no-edit", "upstream/" + branch)
-    git.push()
-    git.checkout(main_branch)
+# def merge_existing_branch(git, branch, main_branch):
+#     git.checkout(branch)
+#     git.merge("--no-edit", "upstream/" + branch)
+#     git.push()
+#     git.checkout(main_branch)
 
-def merge_non_existing_branch(git, branch, main_branch):
-    git.checkout(main_branch)
-    git.checkout('-b', branch)
-    git.merge("--no-edit", "upstream/" + branch)
-    git.push("--set-upstream", "origin", branch)
-    git.checkout(main_branch)
+# def merge_non_existing_branch(git, branch, main_branch):
+#     git.checkout(main_branch)
+#     git.checkout('-b', branch)
+#     git.merge("--no-edit", "upstream/" + branch)
+#     git.push("--set-upstream", "origin", branch)
+#     git.checkout(main_branch)
 
-git = repo.git
+# git = repo.git
 
-for branch in common_branches:
-    merge_existing_branch(git, branch, main_branch)
+# for branch in common_branches:
+#     merge_existing_branch(git, branch, main_branch)
 
-for branch in new_branches:
-    merge_non_existing_branch(git, branch, main_branch)
+# for branch in new_branches:
+#     merge_non_existing_branch(git, branch, main_branch)
