@@ -16,4 +16,3 @@ jobs:
         run: |
           git pull --unshallow
           python3 sync_upstream.py
-          
