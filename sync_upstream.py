@@ -43,7 +43,7 @@ def merge_non_existing_branch(git, branch, main_branch):
 git = repo.git
 
 for branch in common_branches:
-    merge_existing_branch(git, branch)
+    merge_existing_branch(git, branch, main_branch)
 
 for branch in new_branches:
     merge_non_existing_branch(git, branch, main_branch)
