@@ -8,7 +8,7 @@ repo = Repo(os.getcwd())
 
 repo.config_writer().set_value("user", "name", "devops").release()
 repo.config_writer().set_value("user", "email", "devops@inc4.net").release()
-repo.config_writer().set_value("checkout", "remote", "origin").release()
+repo.config_writer().set_value("checkout", "defaultRemote", "origin").release()
 
 upstream = repo.create_remote("upstream", upstream_url)
 
